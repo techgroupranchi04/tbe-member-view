@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .card-title small { font-weight: normal; color: #666; }
+    .chat-bubble { border-radius: 15px; padding: 10px; margin-bottom: 5px; max-width: 75%; }
+    .chat-left { background-color: #f1f1f1; }
+    .chat-right { background-color: #d1e7dd; margin-left: auto; text-align: right; }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" onclick="showView('dashboard')">Member Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" onclick="showView('dashboard')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showView('inbox')">Inbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showView('project')">Project Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showView('search')">Member Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showView('notifications')">Notifications</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
+              <img src="https://via.placeholder.com/30" class="rounded-circle me-1" /> Profile
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><span class="dropdown-item-text">Alexa Smith<br><small class="text-muted">@alexasmith</small></span></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <!-- Member Dashboard -->
+    <div id="dashboardView">
+      <h3 class="mb-3">Member Dashboard</h3>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" />
+              <h5 class="card-title">Alexa Smith <small>- Marketing Specialist</small></h5>
+              <p class="text-muted">Digital Marketing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-header">Edit Profile</div>
+            <div class="card-body">
+              <form>
+                <div class="row g-2">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Full Name" /></div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Title" /></div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Expertise" /></div>
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Location" /></div>
+                </div>
+                <button class="btn btn-primary mt-3">Save</button>
+              </form>
+            </div>
+          </div>
+          <div class="accordion" id="quickLinksAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingNotif">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNotif" aria-expanded="true">
+                  Notifications
+                </button>
+              </h2>
+              <div id="collapseNotif" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Project ABC updated</li>
+                    <li>New message from Jane</li>
+                    <li>Profile viewed by recruiter</li>
+                  </ul>
+                  <button class="btn btn-sm btn-link" onclick="showView('notifications')">See More</button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingProj">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProj" aria-expanded="true">
+                  Project Board
+                </button>
+              </h2>
+              <div id="collapseProj" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Website Redesign</li>
+                    <li>Logo Creation</li>
+                    <li>Product Launch Campaign</li>
+                  </ul>
+                  <button class="btn btn-sm btn-link" onclick="showView('project')">See More</button>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingMsg">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMsg" aria-expanded="true">
+                  Message Inbox
+                </button>
+              </h2>
+              <div id="collapseMsg" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  <ul>
+                    <li>John: Can we connect?</li>
+                    <li>Emily: Review the files</li>
+                    <li>Admin: Welcome onboard!</li>
+                  </ul>
+                  <button class="btn btn-sm btn-link" onclick="showView('inbox')">See More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="inboxView" style="display: none;">
+      <h3 class="mt-5 mb-3">Inbox</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">John Doe</a>
+            <a href="#" class="list-group-item list-group-item-action">Emily Rose</a>
+            <a href="#" class="list-group-item list-group-item-action">Admin</a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="chat-container mb-2">
+            <div class="chat-bubble chat-left">Hello, Alexa!</div>
+            <div class="chat-bubble chat-right">Hi John, how can I help?</div>
+            <div class="chat-bubble chat-left">Can you review the project timeline?</div>
+            <div class="chat-bubble chat-right">Sure, I’ll check and update you.</div>
+          </div>
+          <div class="input-group chat-input">
+            <input type="text" class="form-control" placeholder="Type a message...">
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div id="projectView" style="display: none;">
+      <h3 class="mt-5 mb-3">Project Board</h3>
+      <ul>
+        <li>Project A - In Progress</li>
+        <li>Project B - Completed</li>
+        <li>Project C - On Hold</li>
+      </ul>
+    </div>
+
+    <div id="searchView" style="display: none;">
+      <h3 class="mt-5 mb-3">Member Search</h3>
+      <input type="text" class="form-control" placeholder="Search for members..." />
+    </div>
+
+    <div id="notificationsView" style="display: none;">
+      <h3 class="mt-5 mb-3">Notifications</h3>
+      <ul>
+        <li>Project ABC updated with new deadline</li>
+        <li>New message from Jane Smith</li>
+        <li>Your profile was viewed by 3 new members</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showView(view) {
+      const views = ['dashboard', 'inbox', 'project', 'search', 'notifications'];
+      views.forEach(v => {
+        const el = document.getElementById(v + 'View');
+        if (el) {
+          el.style.display = (v === view) ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
